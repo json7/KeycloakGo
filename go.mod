@@ -1,4 +1,4 @@
-module keycloak-go
+module keycloak
 
 go 1.17
 
