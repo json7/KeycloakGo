@@ -3,9 +3,8 @@ Plugin to add [Keycloak](http://www.keycloak.org/) for authentication to GOLANG 
 
 ## Installation
 ```
-go get github.com/mitch-strong/keycloakgo
-go install
+go get gitlab.nolibox.com/skyteam/keycloak-go
 ```
 
 ## Usage
-For usage of this plugin see [Documentation](../master/USAGE.md)
+For usage of this plugin see [Documentation](./USAGE.md)
