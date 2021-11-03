@@ -22,7 +22,7 @@ func randSeq(n int) string {
 //gets the keycloak JSON informtion from the json file in the json directrory of the users app
 func getKeycloakJSON() {
 
-	jsonFile, err := os.Open("./json/" + keycloakJSONFileName)
+	jsonFile, err := os.Open(KeycloakJSONFileName)
 	if err != nil {
 		fmt.Print(err)
 	}

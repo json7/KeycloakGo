@@ -9,7 +9,10 @@ import (
 )
 
 //Constants
-const keycloakJSONFileName = "keycloak.json"
+
+var (
+	KeycloakJSONFileName = ""
+)
 
 //Global Variables
 var client Client                  //Client Object
@@ -24,11 +27,10 @@ var server string                  //app server string passed from app
 var verifier *oidc.IDTokenVerifier //verifier
 
 //Init begins keycloak server
-func Init(keycloakServer, Server string) {
+func Init(keycloakServer, server, keycloakJsonFile string) {
 	userLog = GetInstance()
 	getKeycloakJSON()
 	keycloakserver = keycloakServer
-	server = Server
 	ctx := context.Background()
 	//Gets the provider for authentication (keycloak)
 	provider, err = oidc.NewProvider(ctx, keycloakserver+"/auth/realms/"+realm)
@@ -41,7 +43,7 @@ func Init(keycloakServer, Server string) {
 	oauth2Config = oauth2.Config{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
-		RedirectURL:  server + "/loginCallback",
+		RedirectURL:  server + "/keycloak/login_callback",
 
 		// Discovery returns the OAuth2 endpoints.
 		Endpoint: provider.Endpoint(),

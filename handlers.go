@@ -56,10 +56,6 @@ func HandleLoginCallback(w http.ResponseWriter, r *http.Request) {
 		body, _ := ioutil.ReadAll(response.Body)
 		var f interface{}
 		json.Unmarshal(body, &f)
-		m := f.(map[string]interface{})
-		username := m["preferred_username"].(string)
-		//forwards to index if login sucessful
-		logAction(username, actionLogin, "")
 		http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
 	}
 	return
